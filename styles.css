@@ -2934,6 +2934,8 @@ body::before {
     box-sizing: border-box;
     justify-items: stretch;
     align-items: start;
+    position: relative;
+    z-index: 2;
 }
 
 .crm-visualization-small::-webkit-scrollbar {
@@ -3167,20 +3169,21 @@ body::before {
 
 .crm-visualization-small:not(.updated) .dust-particle {
     position: absolute;
-    font-size: 1.2rem;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
     opacity: 0.4;
     animation: dustFloat 8s ease-in-out infinite;
+    max-width: 100%;
 }
 
 .crm-visualization-small:not(.updated) .dust-particle:nth-child(1) {
     top: 15%;
-    left: 10%;
+    left: 5%;
     animation-delay: 0s;
 }
 
 .crm-visualization-small:not(.updated) .dust-particle:nth-child(2) {
     top: 60%;
-    left: 70%;
+    left: 75%;
     animation-delay: 2s;
 }
 
@@ -3192,84 +3195,92 @@ body::before {
 
 .crm-visualization-small:not(.updated) .trash-item {
     position: absolute;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     bottom: 10%;
-    right: 15%;
+    right: 10%;
     opacity: 0.5;
     animation: trashSway 4s ease-in-out infinite;
+    max-width: 100%;
 }
 
 .crm-visualization-small:not(.updated) .trash-item-2 {
     position: absolute;
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
     bottom: 25%;
-    left: 8%;
+    left: 3%;
     opacity: 0.45;
     animation: paperFloat 5s ease-in-out infinite;
     transform: rotate(-15deg);
+    max-width: 100%;
 }
 
 .crm-visualization-small:not(.updated) .trash-item-3 {
     position: absolute;
-    font-size: 1.1rem;
+    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
     top: 30%;
-    left: 12%;
+    left: 8%;
     opacity: 0.4;
     animation: paperFloat 6s ease-in-out infinite 1s;
     transform: rotate(20deg);
+    max-width: 100%;
 }
 
 .crm-visualization-small:not(.updated) .broken-item {
     position: absolute;
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
     bottom: 15%;
-    left: 20%;
+    left: 15%;
     opacity: 0.5;
     animation: brokenSway 3s ease-in-out infinite;
+    max-width: 100%;
 }
 
 .crm-visualization-small:not(.updated) .cobweb {
     position: absolute;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     top: 25%;
-    left: 5%;
+    left: 2%;
     opacity: 0.5;
     animation: cobwebSway 7s ease-in-out infinite;
+    max-width: 100%;
 }
 
 .crm-visualization-small:not(.updated) .cobweb-2 {
     top: 70%;
-    right: 8%;
+    right: 5%;
     left: auto;
     animation-delay: 2s;
 }
 
 .crm-visualization-small:not(.updated) .dust-bunny {
     position: absolute;
-    font-size: 1.2rem;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
     bottom: 35%;
-    right: 8%;
+    right: 5%;
     opacity: 0.4;
     animation: dustBunnyMove 8s ease-in-out infinite;
+    max-width: 100%;
 }
 
 .crm-visualization-small:not(.updated) .old-paper {
     position: absolute;
-    font-size: 1.1rem;
+    font-size: clamp(0.7rem, 1.4vw, 1.1rem);
     top: 50%;
-    right: 25%;
+    right: 20%;
     opacity: 0.4;
     animation: paperDrift 6s ease-in-out infinite 2s;
     transform: rotate(25deg);
+    max-width: 100%;
 }
 
 .crm-visualization-small:not(.updated) .spider-web {
     position: absolute;
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
     top: 15%;
-    right: 20%;
+    right: 15%;
     opacity: 0.4;
     animation: webSway 6s ease-in-out infinite;
+    max-width: 100%;
 }
 
 /* Responsive para CRM */
@@ -3498,14 +3509,34 @@ body::before {
     .crm-visualization-small {
         padding: 1.25rem 0.75rem;
         overflow-x: auto;
+        overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         min-height: 320px;
         border-radius: 12px;
+        position: relative;
+    }
+    
+    .crm-visualization-small:not(.updated) {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .crm-visualization-small:not(.updated) .abandonment-effects {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
     }
     
     .crm-container-small {
         min-width: 480px;
         gap: 0.6rem;
+        position: relative;
+        z-index: 2;
     }
     
     .crm-stage-small {

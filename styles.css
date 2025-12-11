@@ -26,6 +26,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
 }
 
 .container {
@@ -35,6 +38,24 @@ body {
     overflow-x: hidden;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    * {
+        max-width: 100%;
+    }
+    
+    img, video, iframe {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 /* Header */
@@ -600,32 +621,75 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+
+    .header {
+        padding: 1.5rem 0;
+    }
+
+    .logo-text {
+        font-size: 1.25rem;
     }
 
     .hero {
-        padding: 3rem 0 4rem;
+        padding: 2rem 0 3rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.25rem);
     }
 
     .audit-section {
-        margin: 4rem 0;
-        padding: 3rem 0;
+        margin: 3rem 0;
+        padding: 2rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+        gap: 0.75rem;
+    }
+
+    .section-icon {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
     }
 
     .problem-section,
     .solution-section {
-        padding: 2rem;
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .problem-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
     }
 
     .map-container {
-        padding: 2rem 1rem;
+        padding: 1.5rem 0.75rem;
         min-height: auto;
+        border-radius: 12px;
     }
 
     .map-nodes-row {
-        margin-top: 4rem;
+        display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding-top: 0;
+        align-items: stretch;
+        max-width: 100%;
     }
 
     .map-node.central {
@@ -633,25 +697,100 @@ body {
         top: auto;
         left: auto;
         transform: none;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
+        width: 100%;
+        min-width: auto;
+    }
+
+    .map-node {
+        width: 100%;
+        min-width: auto;
+        padding: 1.25rem;
+    }
+
+    .node-icon {
+        font-size: 2rem;
+    }
+
+    .map-node.central .node-icon {
+        font-size: 2.5rem;
     }
 
     .map-connections {
         display: none;
     }
 
+    .map-leads {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 1.5rem 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .lead-item {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .problem-alert {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 1.5rem;
+        font-size: 0.95rem;
+        gap: 0.5rem;
+    }
+
+    .alert-icon {
+        font-size: 1.25rem;
+    }
+
+    .solution-intro {
+        padding: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .solution-intro-text {
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+        margin-bottom: 0.75rem;
+    }
+
+    .solution-intro-subtext {
+        font-size: clamp(0.95rem, 4vw, 1.1rem);
+    }
+
     .solution-content {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .solution-card {
+        padding: 1.5rem;
+    }
+
+    .solution-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .solution-text h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .solution-text p {
+        font-size: 0.9rem;
     }
 
     .feature-item {
         flex-direction: column;
         text-align: center;
-        padding: 2rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .feature-item-icon {
         margin: 0 auto;
+        font-size: 3rem;
     }
 }
 
@@ -2178,14 +2317,74 @@ body::before {
 @media (max-width: 768px) {
     .chat-window {
         height: 500px;
+        border-radius: 16px;
+    }
+    
+    .chat-header {
+        padding: 1rem 1.25rem;
+    }
+    
+    .chat-header-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .chat-status {
+        font-size: 0.75rem;
+    }
+    
+    .chat-messages {
+        padding: 1.25rem;
+        gap: 1rem;
     }
     
     .message {
         max-width: 90%;
     }
     
+    .message-content {
+        padding: 0.875rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .chat-input-container {
+        padding: 1rem 1.25rem;
+        gap: 0.5rem;
+    }
+    
+    .chat-input {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .chat-send-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
     .chat-features {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-top: 2rem;
+    }
+    
+    .chat-feature-item {
+        padding: 1.25rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .chat-feature-icon {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .chat-feature-text h4 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .chat-feature-text p {
+        font-size: 0.85rem;
     }
 }
 
@@ -2374,54 +2573,254 @@ body::before {
 }
 
 @media (max-width: 768px) {
+    .roadmap-section {
+        margin: 4rem 0;
+        padding: 3rem 0;
+    }
+    
+    .roadmap-header {
+        margin-bottom: 3rem;
+    }
+    
+    .roadmap-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 0.75rem;
+    }
+    
+    .roadmap-subtitle {
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        padding: 0 1rem;
+    }
+    
     .roadmap-timeline {
-        padding-left: 2rem;
+        padding-left: 1.5rem;
     }
     
     .roadmap-timeline::before {
-        left: 1.5rem;
+        left: 1rem;
     }
     
     .marker-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
     }
     
     .timeline-item {
-        gap: 1.5rem;
+        gap: 1rem;
+        margin-bottom: 2rem;
     }
     
     .timeline-content {
-        padding: 1.5rem;
+        padding: 1.25rem;
+    }
+    
+    .timeline-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.85rem;
+        margin-bottom: 0.75rem;
     }
     
     .timeline-title {
-        font-size: 1.25rem;
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
+        margin-bottom: 0.5rem;
+    }
+    
+    .timeline-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
     }
 }
 
 @media (max-width: 768px) {
     .modal-content {
-        margin: 1rem;
-        padding: 2rem 1.5rem;
+        margin: 0.5rem;
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+        max-width: calc(100% - 1rem);
+    }
+    
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 35px;
+        height: 35px;
+        font-size: 2rem;
+    }
+    
+    .report-badge {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.25rem;
+        margin-bottom: 1.5rem;
     }
     
     .report-main-title {
-        font-size: 1.5rem;
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+    }
+    
+    .report-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .report-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
     }
     
     .section-title-report {
-        font-size: 1.2rem;
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
+        margin-bottom: 1rem;
+    }
+    
+    .subsection-title {
+        font-size: clamp(1rem, 3.5vw, 1.15rem);
+        margin: 1.25rem 0 0.75rem;
+    }
+    
+    .report-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    .metrics-list {
+        gap: 0.6rem;
+    }
+    
+    .metric-item {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 1.25rem 0;
     }
     
     .report-table {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        min-width: 600px;
     }
     
     .report-table th,
     .report-table td {
-        padding: 0.75rem 0.5rem;
+        padding: 0.6rem 0.4rem;
+        white-space: nowrap;
+    }
+    
+    .report-table th {
+        font-size: 0.75rem;
+    }
+    
+    .summary-box {
+        padding: 1.25rem;
+        font-size: 0.9rem;
+        margin-top: 1.25rem;
+    }
+    
+    .critical-metric {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+    }
+    
+    .conclusion-item {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+    }
+    
+    .action-item {
+        padding: 1.25rem;
+    }
+    
+    .action-item strong {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .action-item p {
+        font-size: 0.85rem;
+    }
+    
+    .pattern-item {
+        padding: 1rem;
+    }
+    
+    .pattern-item strong {
+        font-size: 0.95rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .pattern-item p {
+        font-size: 0.85rem;
+    }
+    
+    .analysis-item {
+        margin-bottom: 1.5rem;
+        padding: 1.25rem;
+    }
+    
+    .phrases-box {
+        padding: 1rem;
+        margin: 0.875rem 0;
+    }
+    
+    .phrases-box ul {
+        margin: 0.6rem 0;
+        padding-left: 1.25rem;
+    }
+    
+    .phrases-box li {
+        margin: 0.4rem 0;
+        font-size: 0.85rem;
+    }
+    
+    .phrases-box p {
+        font-size: 0.85rem;
+    }
+    
+    .evaluation-example {
+        padding: 1.5rem;
+        margin-top: 1.25rem;
+    }
+    
+    .eval-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .eval-score {
+        font-size: 1.1rem;
+        padding: 0.875rem;
+    }
+    
+    .eval-section strong {
+        font-size: 1rem;
+    }
+    
+    .eval-detail {
+        padding: 0.875rem;
+    }
+    
+    .eval-detail strong {
+        font-size: 0.95rem;
+    }
+    
+    .eval-detail p {
+        font-size: 0.85rem;
+    }
+    
+    .eval-verdict {
+        padding: 1.25rem;
+    }
+    
+    .eval-verdict strong {
+        font-size: 1rem;
+    }
+    
+    .eval-verdict p {
+        font-size: 0.9rem;
     }
 }
 
@@ -2729,6 +3128,78 @@ body::before {
     }
 }
 
+/* Mejoras adicionales para móviles pequeños */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+    
+    .hero {
+        padding: 1.5rem 0 2.5rem;
+    }
+    
+    .audit-section {
+        margin: 2.5rem 0;
+        padding: 1.5rem 0;
+    }
+    
+    .problem-section,
+    .solution-section {
+        padding: 1.25rem;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 0.875rem;
+    }
+    
+    .metric-card {
+        padding: 1rem;
+    }
+    
+    .solution-card {
+        padding: 1.25rem;
+    }
+    
+    .crm-visualization-small {
+        padding: 1rem 0.5rem;
+    }
+    
+    .crm-container-small {
+        min-width: 400px;
+        gap: 0.5rem;
+    }
+    
+    .crm-stage-small {
+        padding: 0.75rem 0.5rem;
+        min-height: 260px;
+    }
+    
+    .lead-card-small {
+        font-size: 0.6rem;
+        padding: 0.4rem 0.35rem;
+    }
+    
+    .chat-window {
+        height: 450px;
+    }
+    
+    .modal-content {
+        margin: 0.25rem;
+        padding: 1.25rem 0.875rem;
+    }
+    
+    .report-table {
+        min-width: 500px;
+        font-size: 0.75rem;
+    }
+    
+    .report-table th,
+    .report-table td {
+        padding: 0.5rem 0.3rem;
+    }
+}
+
 @media (max-width: 768px) {
     .crm-container {
         grid-template-columns: 1fr;
@@ -2749,89 +3220,183 @@ body::before {
     .metrics-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+        margin: 2rem 0;
     }
     
     .metric-card {
-        padding: 1.5rem;
+        padding: 1.25rem;
+    }
+    
+    .metric-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
     }
     
     .metric-value {
-        font-size: 1.5rem;
+        font-size: clamp(1.25rem, 4vw, 1.5rem);
+        margin-bottom: 0.4rem;
+    }
+    
+    .metric-label {
+        font-size: 0.8rem;
+    }
+    
+    .metrics-footer {
+        margin-top: 2rem;
+        padding: 1.5rem;
     }
     
     .metrics-footer-text {
-        font-size: 1.1rem;
+        font-size: clamp(1rem, 4vw, 1.1rem);
     }
     
     .reports-container {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        margin: 2rem 0;
     }
     
     .report-preview {
         padding: 1.5rem;
     }
     
-    .reports-footer-text {
+    .report-header {
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.875rem;
+    }
+    
+    .report-icon {
+        font-size: 2rem;
+    }
+    
+    .report-title {
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
+    }
+    
+    .report-metric {
+        padding: 0.6rem 0;
+    }
+    
+    .metric-name {
+        font-size: 0.9rem;
+    }
+    
+    .metric-number {
         font-size: 1.1rem;
     }
     
+    .view-report-btn {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+    }
+    
+    .reports-footer {
+        margin-top: 2rem;
+        padding: 1.5rem;
+    }
+    
+    .reports-footer-text {
+        font-size: clamp(1rem, 4vw, 1.1rem);
+    }
+    
     .crm-comparison {
-        padding: 2rem 1rem;
-        margin: 3rem auto;
+        padding: 1.5rem 1rem;
+        margin: 2.5rem auto;
+        border-radius: 16px;
     }
     
     .comparison-header {
-        margin-bottom: 2rem;
-    }
-    
-    .comparison-container {
-        gap: 2rem;
-    }
-    
-    .comparison-label {
         margin-bottom: 1.5rem;
     }
     
-    .crm-visualization-small {
-        padding: 1.5rem 1rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .crm-container-small {
-        min-width: 500px;
-        gap: 0.75rem;
-    }
-    
-    .crm-stage-small {
-        padding: 1rem 0.75rem;
-        min-height: 250px;
-    }
-    
-    .stage-content-small {
-        min-height: 180px;
-    }
-    
-    .lead-card-small {
-        font-size: 0.7rem;
-        padding: 0.5rem 0.4rem;
-    }
-    
-    .stage-header-small h4 {
-        font-size: 0.75rem;
-    }
-    
-    .stage-count-small {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
-    }
-    
-    .empty-stage-small {
-        min-height: 150px;
+    .comparison-title {
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+        margin-bottom: 0.75rem;
     }
     
     .comparison-container {
-        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .comparison-label {
+        margin-bottom: 1.25rem;
+        font-size: clamp(0.95rem, 3vw, 1.1rem);
+        padding: 0.6rem 1.25rem;
+    }
+    
+    .crm-visualization-small {
+        padding: 1.25rem 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        min-height: 320px;
+        border-radius: 12px;
+    }
+    
+    .crm-container-small {
+        min-width: 480px;
+        gap: 0.6rem;
+    }
+    
+    .crm-stage-small {
+        padding: 0.875rem 0.6rem;
+        min-height: 280px;
+    }
+    
+    .stage-header-small {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.6rem;
+    }
+    
+    .stage-header-small h4 {
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+    
+    .stage-count-small {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .stage-content-small {
+        min-height: 200px;
+        gap: 0.5rem;
+    }
+    
+    .lead-card-small {
+        font-size: 0.65rem;
+        padding: 0.5rem 0.4rem;
+        line-height: 1.3;
+    }
+    
+    .empty-stage-small {
+        min-height: 180px;
+    }
+    
+    .empty-icon-small {
+        font-size: 1.75rem;
+    }
+    
+    .ad-card {
+        padding: 1.25rem;
+        margin-bottom: 0.875rem;
+    }
+    
+    .ad-name {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .ad-metrics {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .ad-note {
+        font-size: 0.85rem;
+    }
+    
+    .winners-section,
+    .losers-section {
+        margin-bottom: 1.5rem;
     }
 }

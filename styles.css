@@ -2427,8 +2427,8 @@ body::before {
 
 /* Comparativo CRM */
 .crm-comparison {
-    margin: 5rem auto;
-    padding: 4rem 3.5rem;
+    margin: 4rem auto;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 3vw, 3.5rem);
     background: var(--bg-card);
     border-radius: 20px;
     border: 1px solid var(--border-color);
@@ -2440,11 +2440,11 @@ body::before {
 
 .comparison-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: clamp(2rem, 4vw, 4rem);
 }
 
 .comparison-title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
     color: var(--text-primary);
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 100%);
@@ -2457,7 +2457,7 @@ body::before {
 .comparison-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: start;
     width: 100%;
     max-width: 100%;
@@ -2473,10 +2473,10 @@ body::before {
 
 .comparison-label {
     text-align: center;
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
     font-weight: 600;
-    margin-bottom: 2rem;
-    padding: 1rem 1.5rem;
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
     border-radius: 12px;
 }
 
@@ -2494,17 +2494,21 @@ body::before {
 
 .crm-visualization-small {
     position: relative;
-    padding: 2.5rem 2rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 2rem);
     background: var(--bg-secondary);
     border-radius: 16px;
     border: 1px solid var(--border-color);
-    overflow: visible;
-    min-height: 400px;
+    overflow-x: auto;
+    overflow-y: visible;
+    min-height: 350px;
     max-height: none;
     height: auto;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--bg-secondary);
 }
 
 .crm-visualization-small.updated {
@@ -2515,9 +2519,10 @@ body::before {
 
 .crm-container-small {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(5, minmax(140px, 1fr));
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
     width: 100%;
+    min-width: 700px;
     max-width: 100%;
     overflow: visible;
     box-sizing: border-box;
@@ -2525,12 +2530,30 @@ body::before {
     align-items: start;
 }
 
+.crm-visualization-small::-webkit-scrollbar {
+    height: 8px;
+}
+
+.crm-visualization-small::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+.crm-visualization-small::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.crm-visualization-small::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue-light);
+}
+
 .crm-stage-small {
     background: var(--bg-card);
     border: 2px solid var(--border-color);
     border-radius: 12px;
-    padding: 1.25rem 1rem;
-    min-height: 320px;
+    padding: clamp(0.75rem, 1.5vw, 1.25rem) clamp(0.5rem, 1vw, 1rem);
+    min-height: 280px;
     max-height: none;
     position: relative;
     display: flex;
@@ -2552,25 +2575,30 @@ body::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
+    margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+    padding-bottom: clamp(0.5rem, 1vw, 0.75rem);
     border-bottom: 1px solid var(--border-color);
+    gap: 0.5rem;
 }
 
 .stage-header-small h4 {
-    font-size: 0.9rem;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
+    flex: 1;
+    line-height: 1.3;
 }
 
 .stage-count-small {
     background: var(--bg-secondary);
-    padding: 0.35rem 0.75rem;
+    padding: clamp(0.25rem, 0.5vw, 0.35rem) clamp(0.5rem, 1vw, 0.75rem);
     border-radius: 8px;
-    font-size: 0.85rem;
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
     font-weight: 600;
     color: var(--text-secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .crm-stage-small.updated-stage .stage-count-small {
@@ -2582,12 +2610,12 @@ body::before {
 .stage-content-small {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: clamp(0.4rem, 0.8vw, 0.6rem);
     flex: 1;
-    min-height: 240px;
+    min-height: 200px;
     overflow-y: auto;
     overflow-x: visible;
-    padding-right: 0.5rem;
+    padding-right: clamp(0.25rem, 0.5vw, 0.5rem);
     max-height: 100%;
     width: 100%;
     max-width: 100%;
@@ -2616,8 +2644,8 @@ body::before {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 0.75rem 0.6rem;
-    font-size: 0.8rem;
+    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.4rem, 0.8vw, 0.6rem);
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
     color: var(--text-secondary);
     transition: all 0.3s ease;
     white-space: normal;
@@ -2672,6 +2700,13 @@ body::before {
 }
 
 /* Responsive para CRM */
+@media (max-width: 1400px) {
+    .crm-container-small {
+        min-width: 650px;
+        grid-template-columns: repeat(5, minmax(120px, 1fr));
+    }
+}
+
 @media (max-width: 1200px) {
     .crm-container {
         grid-template-columns: repeat(3, 1fr);
@@ -2682,26 +2717,12 @@ body::before {
     }
     
     .comparison-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
     }
     
     .crm-container-small {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 0.5rem;
-    }
-    
-    .crm-stage-small {
-        padding: 0.5rem;
-    }
-    
-    .stage-header-small h4 {
-        font-size: 0.65rem;
-    }
-    
-    .lead-card-small {
-        font-size: 0.65rem;
-        padding: 0.4rem;
+        min-width: 600px;
+        gap: 0.75rem;
     }
 }
 
@@ -2753,63 +2774,55 @@ body::before {
     }
     
     .crm-comparison {
-        padding: 3rem 2rem;
-        margin: 4rem auto;
+        padding: 2rem 1rem;
+        margin: 3rem auto;
+    }
+    
+    .comparison-header {
+        margin-bottom: 2rem;
     }
     
     .comparison-container {
+        grid-template-columns: 1fr;
         gap: 2.5rem;
     }
     
+    .comparison-label {
+        margin-bottom: 1.5rem;
+    }
+    
     .crm-visualization-small {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
     
     .crm-container-small {
-        gap: 1rem;
+        min-width: 500px;
+        gap: 0.75rem;
     }
     
     .crm-stage-small {
         padding: 1rem 0.75rem;
-    }
-    
-    .comparison-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .crm-container-small {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        overflow-x: visible;
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .crm-stage-small {
-        min-height: 200px;
-        max-height: none;
-        overflow-y: visible;
-        width: 100%;
-        max-width: 100%;
+        min-height: 250px;
     }
     
     .stage-content-small {
-        min-height: 150px;
-        max-height: none;
-        overflow-y: visible;
-        width: 100%;
-        max-width: 100%;
+        min-height: 180px;
     }
     
-    .crm-visualization-small {
-        width: 100%;
-        max-width: 100%;
-        overflow: visible;
+    .lead-card-small {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.4rem;
     }
     
-    .comparison-item {
-        width: 100%;
-        max-width: 100%;
+    .stage-header-small h4 {
+        font-size: 0.75rem;
+    }
+    
+    .stage-count-small {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
     }
     
     .empty-stage-small {

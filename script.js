@@ -389,6 +389,46 @@ document.addEventListener('DOMContentLoaded', () => {
             "El anuncio 'Imagen Estática del Proyecto' tiene el peor CPL ($2.58) y cero leads calificados. Recomiendo pausarlo porque no está generando interés real en el público objetivo."
         ],
         
+        // Respuestas específicas sobre qué anuncio apagar
+        anuncioApagar: [
+            "Deberías apagar el anuncio 'Imagen Estática del Proyecto'. Tiene un CPL de $2.58 (muy por encima del promedio de $1.41), alto gasto en publicidad y un ROAS bajo. Además, no ha generado ningún lead calificado esta semana.",
+            "El anuncio 'Video Tour 360' es el que menos te rinde. Con un CPL de $2.09 y muy pocas conversaciones, está consumiendo presupuesto sin generar resultados. Su ROAS es el más bajo de todos tus anuncios activos.",
+            "Te recomiendo pausar el anuncio 'Imagen Estática'. Tiene alto costo por adquisición ($2.58), bajo ROAS y cero reuniones agendadas. Estás perdiendo dinero en este anuncio.",
+            "El anuncio que deberías apagar es el 'Tour 360'. Genera muchas vistas pero casi ninguna conversión real. Su tasa de cierre es prácticamente cero y el costo por lead es 48% más alto que el promedio."
+        ],
+        
+        // Respuestas sobre anuncios que no rinden
+        anuncioNoRinde: [
+            "El anuncio 'Imagen Estática del Proyecto' tiene el peor ROAS total esta semana. Con un gasto de $45 y solo 2 leads generados, tiene un ROAS de 0.8, muy por debajo del objetivo de 3.0.",
+            "El peor rendimiento lo tiene el 'Video Tour 360' con un ROAS de 1.2. Aunque genera leads, el costo por adquisición es demasiado alto y la tasa de conversión a venta es muy baja.",
+            "El anuncio que menos te rinde es 'Imagen Estática'. Tiene un ROAS de 0.9, lo que significa que por cada dólar invertido, solo recuperas $0.90. Estás perdiendo dinero con este anuncio.",
+            "El 'Tour 360' tiene el peor ROAS con 1.1. Genera leads pero de muy baja calidad, lo que hace que el costo por venta sea extremadamente alto comparado con otros anuncios."
+        ],
+        
+        // Respuestas sobre anuncios que traen personas que no asisten
+        anuncioNoAsisten: [
+            "El anuncio 'Video Tour 360' es el peor en asistencia. Genera 8 agendas pero solo 2 shows (25% de asistencia). Los leads que vienen de este anuncio no tienen suficiente compromiso.",
+            "El anuncio 'Imagen Estática' tiene la peor tasa de no-show. De 5 agendas generadas, solo 1 asistió (20% de asistencia). Este anuncio atrae curiosos, no compradores reales.",
+            "El anuncio que más personas que no asisten trae es el 'Tour 360'. Tiene una tasa de no-show del 75%, lo que indica que los leads no están realmente interesados en comprar.",
+            "El 'Anuncio de Imagen Estática' genera muchas agendas pero casi nadie asiste. Solo el 20% de las personas agendadas realmente se presentan a la reunión, lo que desperdicia tiempo del equipo."
+        ],
+        
+        // Respuestas sobre anuncios que traen leads que no compran
+        anuncioNoCompran: [
+            "El anuncio 'Video Tour 360' trae leads que no compran. Genera 8 agendas pero solo 1 cierre (12.5% de tasa de cierre). Los leads tienen curiosidad pero no intención real de compra.",
+            "El anuncio 'Imagen Estática' tiene el peor desempeño en cierres. De 5 agendas, cero cierres. Este anuncio atrae a personas que solo quieren información, no compradores.",
+            "El anuncio que más leads que no compran trae es el 'Tour 360'. Alto volumen de agendas pero muy bajo porcentaje de cierre (15%), lo que indica que los leads no están calificados.",
+            "El 'Anuncio de Imagen Estática' genera leads de baja calidad. Aunque algunos agendan reunión, ninguno cierra. Esto sugiere que el anuncio no está atrayendo al público objetivo correcto."
+        ],
+        
+        // Respuestas sobre mejor tasa de cierre
+        mejorTasaCierre: [
+            "El anuncio con la mejor tasa de cierre es 'Video Testimonios' con un 42% de conversión de agenda a cierre. De 17 reuniones agendadas, 7 cerraron. Este anuncio atrae compradores reales.",
+            "El 'Anuncio de Simulador de Crédito' tiene la mejor tasa de cierre con 38%. De 10 reuniones, 4 cerraron. Los leads que vienen de este anuncio están más calificados y listos para comprar.",
+            "El mejor anuncio en tasa de cierre es 'Video Testimonios' con 40%. Los testimonios generan confianza y atraen a personas que ya están decididas a invertir.",
+            "El 'Anuncio de Terreno en Preventa' tiene una excelente tasa de cierre del 35%. Los leads que vienen de este anuncio tienen alta intención de compra y cierran más rápido."
+        ],
+        
         // Respuestas variadas sobre vendedores/closers
         vendedores: [
             "Tu mejor vendedor esta semana es Carlos Ramírez con 382 llamadas realizadas, 183 contestadas (48% de contacto) y 12 reuniones agendadas. Su fortaleza es que hace discovery profundo y conecta bien con las objeciones del cliente.",
@@ -397,6 +437,46 @@ document.addEventListener('DOMContentLoaded', () => {
             "Ana Martínez tiene la mejor tasa de asistencia a reuniones (78%). Su secreto es hacer un discovery completo antes de agendar, asegurándose de que el lead tenga presupuesto e interés real.",
             "Luis Fernández necesita mejorar. Solo hace 1.5 intentos por lead en promedio y su tasa de contacto es del 29%. Si aumentara a 6 intentos, podría duplicar sus reuniones.",
             "Sofía López tiene buen rapport pero falla en el cierre. El 60% de sus llamadas terminan sin definir un siguiente paso claro. Necesita trabajar en microcierres y urgencia."
+        ],
+        
+        // Respuestas sobre peor tasa de cierre de closers
+        peorTasaCierre: [
+            "El closer con peor tasa de cierre es Sofía López con solo 12% de conversión. De 15 agendas asignadas, solo cerró 2. Necesita mejorar su técnica de cierre y manejo de objeciones.",
+            "Luis Fernández tiene la peor tasa de cierre con 10%. De 20 agendas, solo cerró 2. El problema es que no profundiza en el discovery y no conecta con las necesidades reales del cliente.",
+            "El peor desempeño en cierres lo tiene Ana Martínez con 11%. Aunque tiene buena tasa de asistencia, falla al momento de cerrar. Necesita trabajar en crear urgencia y definir próximos pasos claros.",
+            "Sofía López tiene la peor tasa de cierre esta semana (12%). Sus reuniones terminan sin compromiso y no logra convertir las oportunidades. Necesita mejorar su técnica de cierre."
+        ],
+        
+        // Respuestas sobre mejor tasa de cierre de closers
+        mejorTasaCierreCloser: [
+            "El closer con mejor tasa de cierre es Carlos Ramírez con 45%. De 12 reuniones, cerró 5. Su fortaleza es que hace discovery profundo y sabe manejar objeciones efectivamente.",
+            "María González tiene la mejor tasa de cierre con 42%. De 10 reuniones, cerró 4. Su secreto es calificar bien antes de agendar y crear urgencia al final de la reunión.",
+            "El mejor desempeño en cierres lo tiene Juan Pérez con 40%. Cierra 4 de cada 10 reuniones porque conecta bien con las emociones del cliente y presenta soluciones personalizadas.",
+            "Carlos Ramírez es el mejor closer con 45% de tasa de cierre. Su técnica incluye discovery completo, presentación personalizada y cierres con urgencia, lo que le da excelentes resultados."
+        ],
+        
+        // Respuestas sobre quién facturó más
+        facturoMas: [
+            "El closer que más facturó esta semana es Carlos Ramírez con $12,500 en cash collected. Cerró 5 ventas con un ticket promedio de $2,500.",
+            "María González facturó más esta semana con $11,200. Cerró 4 ventas, siendo la más productiva del equipo en términos de ingresos.",
+            "El mayor facturador es Juan Pérez con $10,800. Aunque cerró menos reuniones, sus ventas tienen un ticket promedio más alto.",
+            "Carlos Ramírez facturó $12,500 esta semana, siendo el líder del equipo. Sus cierres son consistentes y tiene buena relación con los clientes."
+        ],
+        
+        // Respuestas sobre quién desaprovechó más agendas
+        desaprovechoAgendas: [
+            "Luis Fernández desaprovechó más agendas esta semana. Le asignaron 20 reuniones pero solo cerró 2, desperdiciando 18 oportunidades. Necesita mejorar urgentemente su técnica de cierre.",
+            "Sofía López es la que más desaprovechó. De 15 agendas asignadas, solo cerró 2, perdiendo 13 oportunidades. Su tasa de conversión es muy baja comparada con el resto del equipo.",
+            "El que más desaprovechó es Ana Martínez. Aunque tiene buena asistencia, de 18 reuniones solo cerró 2, desperdiciando 16 oportunidades valiosas.",
+            "Luis Fernández desperdició 18 de 20 agendas asignadas. Con solo 2 cierres, tiene la peor eficiencia del equipo. Necesita capacitación urgente en técnicas de cierre."
+        ],
+        
+        // Respuestas sobre tasa de no-show más alta
+        noShowAlto: [
+            "El closer con la tasa de no-show más alta es Sofía López con 40%. De 15 agendas asignadas, 6 no asistieron. Esto indica que no está calificando bien a los leads antes de agendar.",
+            "Luis Fernández tiene la peor tasa de no-show con 45%. De 20 agendas, 9 no asistieron. El problema es que agenda sin hacer discovery completo y sin crear compromiso.",
+            "La tasa de no-show más alta la tiene Ana Martínez con 38%. De 18 agendas, 7 no asistieron. Necesita mejorar su proceso de calificación y crear más urgencia al agendar.",
+            "Sofía López tiene 40% de no-shows. Esto sugiere que los leads que agenda no están realmente comprometidos. Debería hacer mejor discovery y confirmar el interés antes de agendar."
         ],
         
         // Respuestas variadas sobre llamadas
@@ -463,7 +543,100 @@ document.addEventListener('DOMContentLoaded', () => {
     function getBotResponse(userMessage) {
         const message = userMessage.toLowerCase();
         
-        // Detectar preguntas sobre anuncios (prioridad alta)
+        // Detectar preguntas específicas sobre qué anuncio apagar
+        if ((message.includes('anuncio') && (message.includes('apagar') || message.includes('pausar') || message.includes('quitar'))) ||
+            (message.includes('qué anuncio') && (message.includes('no rinde') || message.includes('mal') || message.includes('peor')))) {
+            const response = getRandomResponse(chatResponses.anuncioApagar);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre anuncios que no rinden
+        if (message.includes('anuncio') && (message.includes('no rinde') || message.includes('no funciona') || 
+            message.includes('peor rendimiento') || message.includes('peor roas'))) {
+            const response = getRandomResponse(chatResponses.anuncioNoRinde);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre anuncios que traen personas que no asisten
+        if (message.includes('anuncio') && (message.includes('no asisten') || message.includes('no-show') || 
+            message.includes('no se presentan') || message.includes('no vienen'))) {
+            const response = getRandomResponse(chatResponses.anuncioNoAsisten);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre anuncios que traen leads que no compran
+        if (message.includes('anuncio') && (message.includes('no compran') || message.includes('no cierran') || 
+            message.includes('no venden') || message.includes('no compra'))) {
+            const response = getRandomResponse(chatResponses.anuncioNoCompran);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre mejor tasa de cierre de anuncios
+        if (message.includes('anuncio') && (message.includes('mejor tasa') || message.includes('mejor cierre') || 
+            message.includes('mejor conversión'))) {
+            const response = getRandomResponse(chatResponses.mejorTasaCierre);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre peor tasa de cierre de closers
+        if ((message.includes('closer') || message.includes('vendedor')) && 
+            (message.includes('peor tasa') || message.includes('peor cierre') || message.includes('peor conversión'))) {
+            const response = getRandomResponse(chatResponses.peorTasaCierre);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre mejor tasa de cierre de closers
+        if ((message.includes('closer') || message.includes('vendedor')) && 
+            (message.includes('mejor tasa') || message.includes('mejor cierre') || message.includes('mejor conversión'))) {
+            const response = getRandomResponse(chatResponses.mejorTasaCierreCloser);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre quién facturó más
+        if ((message.includes('quién') || message.includes('closer') || message.includes('vendedor')) && 
+            (message.includes('facturó') || message.includes('factura') || message.includes('vendió más') || 
+            message.includes('más dinero') || message.includes('más ingresos'))) {
+            const response = getRandomResponse(chatResponses.facturoMas);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre quién desaprovechó más agendas
+        if ((message.includes('quién') || message.includes('closer') || message.includes('vendedor')) && 
+            (message.includes('desaprovechó') || message.includes('desperdició') || message.includes('perdió') || 
+            message.includes('no aprovechó'))) {
+            const response = getRandomResponse(chatResponses.desaprovechoAgendas);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre tasa de no-show más alta
+        if ((message.includes('closer') || message.includes('vendedor')) && 
+            (message.includes('no-show') || message.includes('no asisten') || message.includes('no se presentan') || 
+            message.includes('tasa de no-show'))) {
+            const response = getRandomResponse(chatResponses.noShowAlto);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas generales sobre anuncios (prioridad media)
         if (message.includes('anuncio') || message.includes('ad') || message.includes('campaña') || 
             message.includes('publicidad') || message.includes('ads') || message.includes('anuncios ganador') ||
             message.includes('anuncios perdedor') || message.includes('mejor anuncio') || message.includes('peor anuncio') ||
@@ -474,10 +647,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return response;
         }
         
-        // Detectar preguntas sobre vendedores/closers (prioridad alta)
+        // Detectar preguntas generales sobre vendedores/closers (prioridad media)
         if (message.includes('vendedor') || message.includes('closer') || message.includes('asesor') ||
             message.includes('mejor vendedor') || message.includes('peor vendedor') || message.includes('quién vende más') ||
-            message.includes('desempeño') || message.includes('equipo') || message.includes('comercial') ||
+            message.includes('desempeño') || (message.includes('equipo') && message.includes('comercial')) ||
             (message.includes('quién') && (message.includes('llama') || message.includes('vende') || message.includes('cierra')))) {
             const response = getRandomResponse(chatResponses.vendedores);
             responseHistory.push(response);

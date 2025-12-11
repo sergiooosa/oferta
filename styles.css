@@ -2455,10 +2455,10 @@ body::before {
 }
 
 .comparison-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: clamp(2rem, 4vw, 4rem);
-    align-items: start;
+    align-items: stretch;
     width: 100%;
     max-width: 100%;
     overflow: visible;
@@ -2469,6 +2469,8 @@ body::before {
     width: 100%;
     max-width: 100%;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
 }
 
 .comparison-label {
@@ -2509,6 +2511,7 @@ body::before {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) var(--bg-secondary);
+    flex: 1;
 }
 
 .crm-visualization-small.updated {
@@ -2717,7 +2720,7 @@ body::before {
     }
     
     .comparison-container {
-        gap: 2.5rem;
+        gap: 2rem;
     }
     
     .crm-container-small {
@@ -2783,8 +2786,7 @@ body::before {
     }
     
     .comparison-container {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2rem;
     }
     
     .comparison-label {

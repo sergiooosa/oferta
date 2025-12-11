@@ -32,6 +32,9 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Header */
@@ -2061,6 +2064,218 @@ body::before {
     }
 }
 
+/* Roadmap de Implementación */
+.roadmap-section {
+    margin: 6rem 0;
+    padding: 4rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.roadmap-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.roadmap-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.roadmap-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}
+
+.roadmap-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.roadmap-timeline {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-blue-light) 0%, var(--accent-cyan) 100%);
+    opacity: 0.3;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 2rem;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item.final {
+    margin-bottom: 0;
+}
+
+.timeline-item.final .timeline-line {
+    display: none;
+}
+
+.timeline-marker {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.marker-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 3px solid var(--accent-blue-light);
+    border-radius: 50%;
+    font-size: 1.8rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .marker-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    border-color: var(--accent-cyan);
+}
+
+.timeline-item.final .marker-icon {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: var(--solution-color);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.timeline-line {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: calc(100% + 3rem);
+    background: linear-gradient(180deg, var(--accent-blue-light), var(--accent-cyan));
+    opacity: 0.4;
+}
+
+.timeline-content {
+    flex: 1;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content {
+    border-color: var(--accent-blue-light);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    transform: translateX(5px);
+}
+
+.timeline-item.final .timeline-content {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: var(--solution-color);
+}
+
+.timeline-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid var(--accent-blue-light);
+    border-radius: 20px;
+    color: var(--accent-blue-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline-badge.success {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--solution-color);
+    color: var(--solution-color);
+}
+
+.timeline-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timeline-item.final .timeline-title {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--solution-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timeline-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .roadmap-timeline {
+        padding-left: 2rem;
+    }
+    
+    .roadmap-timeline::before {
+        left: 1.5rem;
+    }
+    
+    .marker-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .timeline-item {
+        gap: 1.5rem;
+    }
+    
+    .timeline-content {
+        padding: 1.5rem;
+    }
+    
+    .timeline-title {
+        font-size: 1.25rem;
+    }
+}
+
 @media (max-width: 768px) {
     .modal-content {
         margin: 1rem;
@@ -2087,11 +2302,15 @@ body::before {
 
 /* Comparativo CRM */
 .crm-comparison {
-    margin: 3rem 0;
+    margin: 3rem auto;
     padding: 2rem;
     background: var(--bg-card);
     border-radius: 20px;
     border: 1px solid var(--border-color);
+    overflow: visible;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .comparison-header {
@@ -2113,10 +2332,17 @@ body::before {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    align-items: start;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
 }
 
 .comparison-item {
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
 }
 
 .comparison-label {
@@ -2135,9 +2361,9 @@ body::before {
 }
 
 .comparison-item.after .comparison-label {
-    background: rgba(16, 185, 129, 0.2);
-    color: var(--solution-color);
-    border: 1px solid var(--solution-color);
+    background: rgba(16, 185, 129, 0.15);
+    color: rgba(16, 185, 129, 0.95);
+    border: 1px solid rgba(16, 185, 129, 0.4);
 }
 
 .crm-visualization-small {
@@ -2148,20 +2374,29 @@ body::before {
     border: 1px solid var(--border-color);
     overflow: visible;
     min-height: 350px;
+    max-height: none;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .crm-visualization-small.updated {
-    border-color: var(--solution-color);
-    background: rgba(16, 185, 129, 0.05);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.03);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
 }
 
 .crm-container-small {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0.75rem;
     width: 100%;
-    overflow-x: auto;
+    max-width: 100%;
+    overflow: visible;
+    box-sizing: border-box;
+    justify-items: stretch;
+    align-items: start;
 }
 
 .crm-stage-small {
@@ -2170,20 +2405,21 @@ body::before {
     border-radius: 10px;
     padding: 0.75rem;
     min-height: 280px;
+    max-height: none;
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: visible;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
 }
 
 .crm-stage-small.updated-stage {
-    border-color: var(--solution-color);
-    background: rgba(16, 185, 129, 0.1);
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
-}
-
-.crm-stage-small.updated-stage {
-    border-color: var(--solution-color);
-    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.08);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
 }
 
 .stage-header-small {
@@ -2212,8 +2448,9 @@ body::before {
 }
 
 .crm-stage-small.updated-stage .stage-count-small {
-    background: rgba(16, 185, 129, 0.2);
-    color: var(--solution-color);
+    background: rgba(16, 185, 129, 0.15);
+    color: rgba(16, 185, 129, 0.9);
+    border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .stage-content-small {
@@ -2223,8 +2460,12 @@ body::before {
     flex: 1;
     min-height: 200px;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: visible;
     padding-right: 0.25rem;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .stage-content-small::-webkit-scrollbar {
@@ -2253,10 +2494,14 @@ body::before {
     font-size: 0.7rem;
     color: var(--text-secondary);
     transition: all 0.3s ease;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
     flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
 }
 
 .lead-card-small.stacked {
@@ -2274,8 +2519,8 @@ body::before {
 .lead-card-small.stacked:nth-child(6) { z-index: 1; transform: translateX(5px) translateY(5px); opacity: 0.7; }
 
 .lead-card-small.updated {
-    background: rgba(16, 185, 129, 0.15);
-    border-color: var(--solution-color);
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.4);
     color: var(--text-primary);
     font-weight: 500;
 }
@@ -2311,6 +2556,25 @@ body::before {
     
     .comparison-container {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .crm-container-small {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
+    
+    .crm-stage-small {
+        padding: 0.5rem;
+    }
+    
+    .stage-header-small h4 {
+        font-size: 0.65rem;
+    }
+    
+    .lead-card-small {
+        font-size: 0.65rem;
+        padding: 0.4rem;
     }
 }
 
@@ -2373,18 +2637,35 @@ body::before {
         grid-template-columns: 1fr;
         gap: 1rem;
         overflow-x: visible;
+        width: 100%;
+        max-width: 100%;
     }
     
     .crm-stage-small {
         min-height: 200px;
         max-height: none;
         overflow-y: visible;
+        width: 100%;
+        max-width: 100%;
     }
     
     .stage-content-small {
         min-height: 150px;
         max-height: none;
         overflow-y: visible;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .crm-visualization-small {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+    }
+    
+    .comparison-item {
+        width: 100%;
+        max-width: 100%;
     }
     
     .empty-stage-small {

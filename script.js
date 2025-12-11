@@ -378,6 +378,44 @@ document.addEventListener('DOMContentLoaded', () => {
             "Basado en los datos de esta semana, tienes 362 llamadas realizadas, 128 leads calificados y 95 reuniones agendadas.",
             "El costo por lead actual es de $125, el costo por reunión es de $95, y el costo por venta es de $1,250.",
             "Tu mejor vendedor esta semana es Carlos Ramírez con una conversión del 10% y 11 reuniones realizadas."
+        ],
+        
+        // Respuestas variadas sobre anuncios
+        anuncios: [
+            "El anuncio ganador esta semana es el 'Video Testimonios' con 52 leads generados y un CPL de $1.19. Este anuncio tiene mejor retención porque conecta emocionalmente con el público objetivo mostrando casos de éxito reales.",
+            "El mejor rendimiento lo tiene el 'Anuncio de Simulador de Crédito' con 44 leads y CPL de $1.36. Funciona bien porque genera alta curiosidad y atrae a personas con intención real de inversión.",
+            "El anuncio 'Terreno en Preventa' está generando leads de alta calidad. Tiene un CPL de $1.45 y una tasa de conversión a reunión del 28%, superior al promedio.",
+            "El anuncio 'Video Tour 360' tiene bajo rendimiento con CPL de $2.09. Aunque es visualmente atractivo, no comunica claramente el beneficio y genera más curiosidad que intención real.",
+            "El anuncio 'Imagen Estática del Proyecto' tiene el peor CPL ($2.58) y cero leads calificados. Recomiendo pausarlo porque no está generando interés real en el público objetivo."
+        ],
+        
+        // Respuestas variadas sobre vendedores/closers
+        vendedores: [
+            "Tu mejor vendedor esta semana es Carlos Ramírez con 382 llamadas realizadas, 183 contestadas (48% de contacto) y 12 reuniones agendadas. Su fortaleza es que hace discovery profundo y conecta bien con las objeciones del cliente.",
+            "María González tiene el mejor desempeño en conversión a reunión con un 10.5%. Hace 8-10 intentos por lead en las primeras 24 horas, lo que le permite contactar al 65% de sus leads asignados.",
+            "Juan Pérez es el más rápido en speed-to-lead con promedio de 8 minutos. Esto le da ventaja porque contacta a los leads cuando aún están calientes y recuerdan el anuncio.",
+            "Ana Martínez tiene la mejor tasa de asistencia a reuniones (78%). Su secreto es hacer un discovery completo antes de agendar, asegurándose de que el lead tenga presupuesto e interés real.",
+            "Luis Fernández necesita mejorar. Solo hace 1.5 intentos por lead en promedio y su tasa de contacto es del 29%. Si aumentara a 6 intentos, podría duplicar sus reuniones.",
+            "Sofía López tiene buen rapport pero falla en el cierre. El 60% de sus llamadas terminan sin definir un siguiente paso claro. Necesita trabajar en microcierres y urgencia."
+        ],
+        
+        // Respuestas variadas sobre llamadas
+        llamadas: [
+            "Esta semana se realizaron 312 llamadas a 198 leads diferentes. El 42% contestó al menos una vez. El problema es que el promedio de intentos es solo 1.8, cuando debería ser mínimo 5-6 para maximizar el contacto.",
+            "El speed-to-lead promedio es de 2 horas 41 minutos, muy por encima del ideal de menos de 15 minutos. Solo el 18% de las llamadas se hacen en los primeros 15 minutos, cuando el lead aún está caliente.",
+            "De las 84 llamadas contestadas, solo 27 terminaron en reunión agendada (32% de conversión). El problema principal es que muchos asesores no hacen discovery profundo antes de proponer la reunión.",
+            "El 63% de los leads que contestaron no recordaban el anuncio o estaban confundidos. Esto obliga a los asesores a gastar tiempo explicando desde cero en lugar de avanzar en el proceso comercial.",
+            "Solo el 42% de los asesores pregunta por presupuesto, motivo de compra y plazo antes de agendar reunión. Esto explica por qué muchas reuniones se caen o no asisten - no están bien calificadas.",
+            "La tasa de contacto mejoró esta semana al 42%, pero aún está por debajo del potencial. Si aumentáramos los intentos a 6 por lead en las primeras 24 horas, podríamos llegar al 70% de contacto."
+        ],
+        
+        // Respuestas variadas sobre métricas generales
+        metricas: [
+            "Esta semana tienes 138 leads generados con una inversión de $195 USD. El CPL promedio es de $1.41, que está dentro del rango óptimo. El problema no es la cantidad de leads, sino cómo se están gestionando.",
+            "El costo por venta actual es de $1,250. Desglosado: $1.41 por lead, $18 por llamada, $95 por reunión. Si mejoráramos la conversión de reunión a venta del 56% al 70%, podríamos reducir el costo por venta a $1,000.",
+            "Tienes 27 reuniones agendadas pero solo 15 asistieron (56% de asistencia). De esas 15, solo 9 están calificadas como oportunidades reales. El resto son curiosos o sin presupuesto claro.",
+            "El speed-to-lead promedio de 2h 41min está afectando seriamente la conversión. Si lo redujéramos a menos de 15 minutos, podríamos aumentar las reuniones agendadas en un 40-50%.",
+            "La inversión semanal de $195 generó 138 leads. Si volviéramos al presupuesto óptimo de $1,050-1,200 mensuales, podríamos generar 160-180 leads por semana y mantener un CPL estable."
         ]
     };
 
@@ -393,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         } else {
             messageDiv.innerHTML = `
-                <div class="message-avatar">🤖</div>
+                <div class="message-avatar aura-avatar">✨</div>
                 <div class="message-content">
                     <p>${text}</p>
                 </div>
@@ -404,45 +442,105 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
+    // Almacenar historial de respuestas para evitar repetir exactamente lo mismo
+    let responseHistory = [];
+    const MAX_HISTORY = 10;
+    
+    function getRandomResponse(responses, excludeIndex = -1) {
+        if (responses.length === 0) return "";
+        if (responses.length === 1) return responses[0];
+        
+        let attempts = 0;
+        let index;
+        do {
+            index = Math.floor(Math.random() * responses.length);
+            attempts++;
+        } while (index === excludeIndex && attempts < 10);
+        
+        return responses[index];
+    }
+    
     function getBotResponse(userMessage) {
         const message = userMessage.toLowerCase();
+        
+        // Detectar preguntas sobre anuncios (prioridad alta)
+        if (message.includes('anuncio') || message.includes('ad') || message.includes('campaña') || 
+            message.includes('publicidad') || message.includes('ads') || message.includes('anuncios ganador') ||
+            message.includes('anuncios perdedor') || message.includes('mejor anuncio') || message.includes('peor anuncio') ||
+            message.includes('cpl') || message.includes('costo por lead')) {
+            const response = getRandomResponse(chatResponses.anuncios);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre vendedores/closers (prioridad alta)
+        if (message.includes('vendedor') || message.includes('closer') || message.includes('asesor') ||
+            message.includes('mejor vendedor') || message.includes('peor vendedor') || message.includes('quién vende más') ||
+            message.includes('desempeño') || message.includes('equipo') || message.includes('comercial') ||
+            (message.includes('quién') && (message.includes('llama') || message.includes('vende') || message.includes('cierra')))) {
+            const response = getRandomResponse(chatResponses.vendedores);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre llamadas (prioridad alta)
+        if (message.includes('llamada') || message.includes('llamadas') || message.includes('llamó') ||
+            message.includes('contacto') || message.includes('speed to lead') || message.includes('intentos') ||
+            message.includes('cuántas veces') || message.includes('contestó') || message.includes('contestaron')) {
+            const response = getRandomResponse(chatResponses.llamadas);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
+        
+        // Detectar preguntas sobre métricas generales
+        if (message.includes('métrica') || message.includes('métricas') || message.includes('dato') ||
+            message.includes('estadística') || message.includes('número') || message.includes('cifra') ||
+            message.includes('costo por venta') || message.includes('costo por reunión') || message.includes('conversión')) {
+            const response = getRandomResponse(chatResponses.metricas);
+            responseHistory.push(response);
+            if (responseHistory.length > MAX_HISTORY) responseHistory.shift();
+            return response;
+        }
         
         // 1. ¿Qué hace exactamente nuestro negocio?
         if (message.includes('qué hace') || message.includes('qué es') || message.includes('qué hacen') || 
             message.includes('qué ofrecen') || message.includes('servicio') || message.includes('autokpi') ||
             message.includes('plataforma') || message.includes('qué hacen ustedes')) {
-            return chatResponses.queHacemos[Math.floor(Math.random() * chatResponses.queHacemos.length)];
+            return getRandomResponse(chatResponses.queHacemos);
         }
         
         // 2. Resultado final
         if (message.includes('resultado') || message.includes('qué obtengo') || message.includes('qué recibo') ||
             message.includes('beneficio') || message.includes('qué logro') || message.includes('parámetros')) {
-            return chatResponses.resultado[Math.floor(Math.random() * chatResponses.resultado.length)];
+            return getRandomResponse(chatResponses.resultado);
         }
         
         // 3. Tipo de clientes
         if (message.includes('cliente') || message.includes('trabajan con') || message.includes('quiénes') ||
             message.includes('requisito') || message.includes('necesito') || message.includes('requiero') ||
-            message.includes('inversión mínima') || message.includes('500 usd') || message.includes('equipo comercial')) {
-            return chatResponses.clientes[Math.floor(Math.random() * chatResponses.clientes.length)];
+            message.includes('inversión mínima') || message.includes('500 usd')) {
+            return getRandomResponse(chatResponses.clientes);
         }
         
         // 4. ¿Qué entregamos?
         if (message.includes('entreg') || message.includes('incluye') || message.includes('qué viene') ||
             message.includes('qué incluye') || message.includes('qué contiene')) {
-            return chatResponses.entregamos[Math.floor(Math.random() * chatResponses.entregamos.length)];
+            return getRandomResponse(chatResponses.entregamos);
         }
         
         // 5. ¿Qué NO hacemos?
         if (message.includes('no hacen') || message.includes('no ofrecen') || message.includes('no trabajan') ||
             message.includes('no incluye') || message.includes('límite') || message.includes('alcance') ||
             message.includes('marketing tradicional') || message.includes('community') || message.includes('redes sociales')) {
-            return chatResponses.noHacemos[Math.floor(Math.random() * chatResponses.noHacemos.length)];
+            return getRandomResponse(chatResponses.noHacemos);
         }
         
         // Operación - Integración
         if (message.includes('conecta') || message.includes('integra') || message.includes('ghl') ||
-            message.includes('go high level') || message.includes('crm')) {
+            message.includes('go high level') || (message.includes('crm') && !message.includes('anuncio'))) {
             return chatResponses.operacion.integracion;
         }
         
@@ -466,8 +564,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return chatResponses.operacion.crmNoActualiza;
         }
         
-        // Operación - Revisar llamadas
-        if (message.includes('revisar') || message.includes('ver llamadas') || message.includes('cuántas veces llamó')) {
+        // Operación - Revisar llamadas (solo si no es pregunta específica sobre datos)
+        if ((message.includes('revisar') || message.includes('ver llamadas')) && 
+            !message.includes('cuántas') && !message.includes('cuántos')) {
             return chatResponses.operacion.revisarLlamadas;
         }
         
@@ -487,7 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Resultados - Tiempo
-        if (message.includes('tiempo') || message.includes('cuándo') || message.includes('cuánto tarda') ||
+        if ((message.includes('tiempo') || message.includes('cuándo') || message.includes('cuánto tarda')) &&
             message.includes('resultados')) {
             return chatResponses.resultados.tiempoResultados;
         }
@@ -507,13 +606,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return chatResponses.requisitos.ghl;
         }
         
-        // Requisitos - Inversión ads
-        if (message.includes('inversión') || message.includes('cuánto debo invertir') || message.includes('500 usd')) {
+        // Requisitos - Inversión ads (solo si es pregunta sobre requisitos, no métricas)
+        if ((message.includes('inversión') || message.includes('cuánto debo invertir')) && 
+            (message.includes('requisito') || message.includes('necesito') || message.includes('mínimo'))) {
             return chatResponses.requisitos.inversionAds;
         }
         
-        // Requisitos - Equipo comercial
-        if (message.includes('equipo comercial') || message.includes('necesito equipo') || message.includes('vendedores')) {
+        // Requisitos - Equipo comercial (solo si es pregunta sobre requisitos)
+        if ((message.includes('equipo comercial') || message.includes('necesito equipo')) &&
+            (message.includes('requisito') || message.includes('necesito') || message.includes('requiero'))) {
             return chatResponses.requisitos.equipoComercial;
         }
         
@@ -527,23 +628,23 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Promesa central
         if (message.includes('promesa') || message.includes('objetivo') || message.includes('propuesta')) {
-            return chatResponses.promesa[Math.floor(Math.random() * chatResponses.promesa.length)];
+            return getRandomResponse(chatResponses.promesa);
         }
         
         // Transformación
         if (message.includes('transformación') || message.includes('cambio') || message.includes('antes y después')) {
-            return chatResponses.transformacion[Math.floor(Math.random() * chatResponses.transformacion.length)];
+            return getRandomResponse(chatResponses.transformacion);
         }
         
-        // Detectar preguntas sobre datos del negocio
-        if (message.includes('llamada') || message.includes('lead') || message.includes('asesor') || 
-            message.includes('métrica') || message.includes('costo') || message.includes('venta') ||
-            message.includes('reunión') || message.includes('cuánto') || message.includes('cuántas')) {
-            return chatResponses.datos[Math.floor(Math.random() * chatResponses.datos.length)];
+        // Preguntas genéricas sobre leads o reuniones (sin ser específicas)
+        if ((message.includes('lead') || message.includes('reunión')) && 
+            !message.includes('cuántas') && !message.includes('cuántos') && 
+            !message.includes('anuncio') && !message.includes('vendedor')) {
+            return getRandomResponse(chatResponses.datos);
         }
         
         // Respuesta por defecto
-        return "Puedo ayudarte con información sobre tu negocio (llamadas, leads, asesores, métricas) o sobre el servicio AutoKPI. ¿Sobre qué te gustaría saber más? Puedes preguntarme sobre qué hacemos, qué entregamos, requisitos, resultados, o cualquier duda sobre el servicio.";
+        return "Puedo ayudarte con información sobre tu negocio (llamadas, leads, asesores, métricas, anuncios) o sobre el servicio AutoKPI. ¿Sobre qué te gustaría saber más? Puedes preguntarme sobre qué hacemos, qué entregamos, requisitos, resultados, o cualquier duda sobre el servicio.";
     }
 
     function sendMessage() {

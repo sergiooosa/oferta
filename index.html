@@ -188,21 +188,36 @@
                             <div class="metric-icon-channel">💬</div>
                             <div class="metric-value-channel">35</div>
                             <div class="metric-label-channel">Total de Chats</div>
+                            <div class="metric-ai-status">
+                                <span class="ai-pulse"></span>
+                                <span>IA analizando</span>
+                            </div>
                         </div>
                         <div class="channel-metric-card">
                             <div class="metric-icon-channel">📞</div>
                             <div class="metric-value-channel">53</div>
                             <div class="metric-label-channel">Llamadas Realizadas</div>
+                            <div class="metric-ai-status">
+                                <span class="ai-pulse"></span>
+                                <span>IA analizando</span>
+                            </div>
                         </div>
                         <div class="channel-metric-card">
                             <div class="metric-icon-channel">📹</div>
                             <div class="metric-value-channel">12</div>
                             <div class="metric-label-channel">Videollamadas</div>
+                            <div class="metric-ai-status">
+                                <span class="ai-pulse"></span>
+                                <span>IA analizando</span>
+                            </div>
                         </div>
                         <div class="channel-metric-card highlight">
-                            <div class="metric-icon-channel">🔄</div>
+                            <div class="metric-icon-channel">🤖</div>
                             <div class="metric-value-channel">100%</div>
-                            <div class="metric-label-channel">CRM Actualizado</div>
+                            <div class="metric-label-channel">Análisis Completado</div>
+                            <div class="metric-ai-status success">
+                                <span>✅ CRM sincronizado</span>
+                            </div>
                         </div>
                     </div>
                     
@@ -265,9 +280,25 @@
                                         <div class="lead-tags">
                                             <span class="tag yellow">sin etiquetar</span>
                                         </div>
-                                        <div class="analyzing-badge">
-                                            <span class="pulse-dot"></span>
-                                            Analizando...
+                                        <div class="ai-analysis-container">
+                                            <div class="analyzing-badge">
+                                                <span class="pulse-dot"></span>
+                                                <span class="ai-status-text">IA analizando mensaje...</span>
+                                            </div>
+                                            <div class="ai-progress-steps">
+                                                <div class="progress-step active">
+                                                    <span class="step-icon">📝</span>
+                                                    <span class="step-text">Procesando texto</span>
+                                                </div>
+                                                <div class="progress-step active">
+                                                    <span class="step-icon">🧠</span>
+                                                    <span class="step-text">Analizando intención</span>
+                                                </div>
+                                                <div class="progress-step">
+                                                    <span class="step-icon">🏷️</span>
+                                                    <span class="step-text">Generando etiquetas</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="lead-pipeline-card">
@@ -278,9 +309,25 @@
                                         <div class="lead-tags">
                                             <span class="tag yellow">sin etiquetar</span>
                                         </div>
-                                        <div class="analyzing-badge">
-                                            <span class="pulse-dot"></span>
-                                            Analizando...
+                                        <div class="ai-analysis-container">
+                                            <div class="analyzing-badge">
+                                                <span class="pulse-dot"></span>
+                                                <span class="ai-status-text">IA extrayendo datos...</span>
+                                            </div>
+                                            <div class="ai-progress-steps">
+                                                <div class="progress-step completed">
+                                                    <span class="step-icon">✅</span>
+                                                    <span class="step-text">Texto procesado</span>
+                                                </div>
+                                                <div class="progress-step active">
+                                                    <span class="step-icon">💭</span>
+                                                    <span class="step-text">Detectando interés</span>
+                                                </div>
+                                                <div class="progress-step">
+                                                    <span class="step-icon">🔄</span>
+                                                    <span class="step-text">Actualizando CRM</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="lead-pipeline-card">
@@ -312,7 +359,14 @@
                                             <span class="tag green">Interesado</span>
                                         </div>
                                         <div class="crm-updated-badge">
-                                            ✅ CRM actualizado
+                                            <div class="crm-badge-header">
+                                                <span class="crm-icon">✅</span>
+                                                <span class="crm-text">CRM actualizado</span>
+                                            </div>
+                                            <div class="crm-details">
+                                                <span class="crm-detail-item">🏷️ Etiqueta: Interesado</span>
+                                                <span class="crm-detail-item">📊 Etapa: Calificado</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="lead-pipeline-card updated">
@@ -325,7 +379,14 @@
                                             <span class="tag green">Interesado</span>
                                         </div>
                                         <div class="crm-updated-badge">
-                                            ✅ CRM actualizado
+                                            <div class="crm-badge-header">
+                                                <span class="crm-icon">✅</span>
+                                                <span class="crm-text">CRM actualizado</span>
+                                            </div>
+                                            <div class="crm-details">
+                                                <span class="crm-detail-item">🏷️ Etiqueta: Interesado</span>
+                                                <span class="crm-detail-item">📅 Seguimiento: Agendado</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="lead-pipeline-card updated">
@@ -417,18 +478,50 @@
                                         <div class="lead-name">Casey Morissette</div>
                                         <div class="lead-phone">+573014385768</div>
                                         <div class="lead-assigned">Asesor: Juan Pérez</div>
-                                        <div class="analyzing-badge">
-                                            <span class="pulse-dot"></span>
-                                            Analizando llamada...
+                                        <div class="ai-analysis-container">
+                                            <div class="analyzing-badge">
+                                                <span class="pulse-dot"></span>
+                                                <span class="ai-status-text">IA procesando llamada...</span>
+                                            </div>
+                                            <div class="ai-progress-steps">
+                                                <div class="progress-step active">
+                                                    <span class="step-icon">🎤</span>
+                                                    <span class="step-text">Transcribiendo audio</span>
+                                                </div>
+                                                <div class="progress-step">
+                                                    <span class="step-icon">🔍</span>
+                                                    <span class="step-text">Analizando conversación</span>
+                                                </div>
+                                                <div class="progress-step">
+                                                    <span class="step-icon">📊</span>
+                                                    <span class="step-text">Extrayendo métricas</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="lead-pipeline-card">
                                         <div class="lead-name">Mr. Charlie Kerluke</div>
                                         <div class="lead-phone">+573514204079</div>
                                         <div class="lead-assigned">Asesor: Juan Pérez</div>
-                                        <div class="analyzing-badge">
-                                            <span class="pulse-dot"></span>
-                                            Analizando llamada...
+                                        <div class="ai-analysis-container">
+                                            <div class="analyzing-badge">
+                                                <span class="pulse-dot"></span>
+                                                <span class="ai-status-text">IA analizando parámetros...</span>
+                                            </div>
+                                            <div class="ai-progress-steps">
+                                                <div class="progress-step completed">
+                                                    <span class="step-icon">✅</span>
+                                                    <span class="step-text">Transcripción lista</span>
+                                                </div>
+                                                <div class="progress-step active">
+                                                    <span class="step-icon">🧠</span>
+                                                    <span class="step-text">Detectando intención</span>
+                                                </div>
+                                                <div class="progress-step">
+                                                    <span class="step-icon">🔄</span>
+                                                    <span class="step-text">Sincronizando CRM</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -516,8 +609,35 @@
                                             <span class="tag green">Interesado</span>
                                             <span class="tag light-blue">Presupuesto: $250K</span>
                                         </div>
-                                        <div class="crm-updated-badge">
-                                            ✅ Campos completados automáticamente
+                                        <div class="ai-analysis-complete">
+                                            <div class="ai-complete-header">
+                                                <span class="ai-icon">🤖</span>
+                                                <span class="ai-complete-text">Análisis IA completado</span>
+                                            </div>
+                                            <div class="ai-metrics-extracted">
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">📝 Transcripción:</span>
+                                                    <span class="metric-value">45 min procesados</span>
+                                                </div>
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">📊 Parámetros:</span>
+                                                    <span class="metric-value">42/42 analizados</span>
+                                                </div>
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">💰 Presupuesto:</span>
+                                                    <span class="metric-value">$250K detectado</span>
+                                                </div>
+                                            </div>
+                                            <div class="crm-updated-badge">
+                                                <div class="crm-badge-header">
+                                                    <span class="crm-icon">✅</span>
+                                                    <span class="crm-text">CRM sincronizado</span>
+                                                </div>
+                                                <div class="crm-details">
+                                                    <span class="crm-detail-item">📋 Campos: 8 actualizados</span>
+                                                    <span class="crm-detail-item">🏷️ Etiquetas: 3 añadidas</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="lead-pipeline-card updated">
@@ -529,8 +649,35 @@
                                             <span class="tag green">Interesado</span>
                                             <span class="tag light-blue">Urgencia: Alta</span>
                                         </div>
-                                        <div class="crm-updated-badge">
-                                            ✅ Etapa: "Reunión" → "Calificado"
+                                        <div class="ai-analysis-complete">
+                                            <div class="ai-complete-header">
+                                                <span class="ai-icon">🤖</span>
+                                                <span class="ai-complete-text">Análisis IA completado</span>
+                                            </div>
+                                            <div class="ai-metrics-extracted">
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">🎯 Intención:</span>
+                                                    <span class="metric-value">Alta detectada</span>
+                                                </div>
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">⏰ Urgencia:</span>
+                                                    <span class="metric-value">Alta identificada</span>
+                                                </div>
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">📈 Sentimiento:</span>
+                                                    <span class="metric-value">Positivo (92%)</span>
+                                                </div>
+                                            </div>
+                                            <div class="crm-updated-badge">
+                                                <div class="crm-badge-header">
+                                                    <span class="crm-icon">✅</span>
+                                                    <span class="crm-text">Etapa actualizada</span>
+                                                </div>
+                                                <div class="crm-details">
+                                                    <span class="crm-detail-item">🔄 "Reunión" → "Calificado"</span>
+                                                    <span class="crm-detail-item">📊 GHL sincronizado</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="lead-pipeline-card updated">
@@ -542,8 +689,35 @@
                                             <span class="tag green">Interesado</span>
                                             <span class="tag light-blue">Cierre: Positivo</span>
                                         </div>
-                                        <div class="crm-updated-badge highlight">
-                                            ✅ Etapa: "Cerrado" - CRM sincronizado
+                                        <div class="ai-analysis-complete highlight">
+                                            <div class="ai-complete-header">
+                                                <span class="ai-icon">🤖</span>
+                                                <span class="ai-complete-text">Análisis IA completado</span>
+                                            </div>
+                                            <div class="ai-metrics-extracted">
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">✅ Cierre:</span>
+                                                    <span class="metric-value">Positivo confirmado</span>
+                                                </div>
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">💵 Valor:</span>
+                                                    <span class="metric-value">$180K identificado</span>
+                                                </div>
+                                                <div class="ai-metric-item">
+                                                    <span class="metric-label">📊 Score:</span>
+                                                    <span class="metric-value">98% probabilidad</span>
+                                                </div>
+                                            </div>
+                                            <div class="crm-updated-badge highlight">
+                                                <div class="crm-badge-header">
+                                                    <span class="crm-icon">✅</span>
+                                                    <span class="crm-text">Venta cerrada - CRM actualizado</span>
+                                                </div>
+                                                <div class="crm-details">
+                                                    <span class="crm-detail-item">🏆 Etapa: "Cerrado"</span>
+                                                    <span class="crm-detail-item">🔄 GHL sincronizado en tiempo real</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

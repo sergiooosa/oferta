@@ -279,6 +279,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Funcionalidad de Tabs de Canales
+    const channelTabs = document.querySelectorAll('.channel-tab');
+    const channelContents = document.querySelectorAll('.channel-content');
+
+    channelTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetChannel = tab.getAttribute('data-channel');
+            
+            // Remover active de todos los tabs
+            channelTabs.forEach(t => t.classList.remove('active'));
+            // Agregar active al tab clickeado
+            tab.classList.add('active');
+            
+            // Ocultar todos los contenidos
+            channelContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Mostrar el contenido correspondiente
+            const targetContent = document.getElementById(`${targetChannel}-content`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+
     // Funcionalidad del Chat
     const chatInput = document.getElementById('chatInput');
     const chatSendBtn = document.getElementById('chatSendBtn');
